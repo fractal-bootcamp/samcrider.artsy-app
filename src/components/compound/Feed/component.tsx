@@ -2,7 +2,7 @@ import React from "react";
 
 const Feed = () => {
   return (
-    <div className="carousel carousel-vertical rounded-box h-[75%]">
+    <div className="carousel carousel-vertical rounded-box h-[50rem]">
       <div className="carousel-item h-full">
         <img src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg" />
       </div>
