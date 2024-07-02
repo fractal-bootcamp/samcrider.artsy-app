@@ -1,6 +1,7 @@
 import React from "react";
 import { ContentCreatorProps } from "./types";
 import PingPong from "@/components/content/games/PingPong/component";
+import GravityShapes from "@/components/content/art/GravityShapes/component";
 
 const ContentCreator = ({ mode }: ContentCreatorProps) => {
   switch (mode.choice) {
@@ -17,7 +18,11 @@ const ContentCreator = ({ mode }: ContentCreatorProps) => {
     case "GeoTrees":
       return <div>GeoTrees</div>;
     case "Gravity Shapes":
-      return <div>Gravity Shapes</div>;
+      return (
+        <div className="h-full w-full">
+          <GravityShapes />
+        </div>
+      );
     default:
       return <div>None</div>;
   }
