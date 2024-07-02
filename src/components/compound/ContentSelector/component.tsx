@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { ContentSelectorProps, Content } from "./types";
+import { Choice, Mode } from "../CreateModal/types";
 
-type Content = {
-  title: string;
-};
-
-const ContentSelector = () => {
+const ContentSelector = ({ setMode }: ContentSelectorProps) => {
   const [games, setGames] = useState<Content[]>([]);
   const [arts, setArts] = useState<Content[]>([]);
 
@@ -30,6 +28,13 @@ const ContentSelector = () => {
     ]);
   }, []);
 
+  const handleClick = (choice: string) => {
+    setMode({
+      selected: true,
+      choice: choice as Choice,
+    });
+  };
+
   return (
     <div className="join join-vertical w-full">
       <div className="collapse collapse-plus join-item border-base-300 border">
@@ -39,7 +44,11 @@ const ContentSelector = () => {
         </div>
         <div className="collapse-content">
           {games.map((game, i) => (
-            <button key={i} className="btn m-2">
+            <button
+              key={i}
+              className="btn m-2"
+              onClick={() => handleClick(game.title)}
+            >
               {game.title}
             </button>
           ))}
@@ -50,7 +59,11 @@ const ContentSelector = () => {
         <div className="collapse-title text-xl text-left font-medium">Art</div>
         <div className="collapse-content">
           {arts.map((art, i) => (
-            <button key={i} className="btn m-2">
+            <button
+              key={i}
+              className="btn m-2"
+              onClick={() => handleClick(art.title)}
+            >
               {art.title}
             </button>
           ))}
