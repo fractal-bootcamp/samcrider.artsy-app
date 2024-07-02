@@ -8,13 +8,13 @@ const CreateModal = () => {
         className="btn btn-secondary"
         onClick={() =>
           (
-            document.getElementById("my_modal_1") as HTMLDialogElement
+            document.getElementById("create_modal") as HTMLDialogElement
           )?.showModal()
         }
       >
         CREATE
       </button>
-      <dialog id="my_modal_1" className="modal">
+      <dialog id="create_modal" className="modal">
         <div className="modal-box flex flex-col justify-between items-center">
           <ContentSelector />
           <div className="modal-action">

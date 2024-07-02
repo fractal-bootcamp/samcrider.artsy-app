@@ -33,7 +33,7 @@ const ContentSelector = () => {
   return (
     <div className="join join-vertical w-full">
       <div className="collapse collapse-plus join-item border-base-300 border">
-        <input type="radio" name="my-accordion-4" />
+        <input type="radio" name="content-accordion" />
         <div className="collapse-title text-xl text-left font-medium">
           Games
         </div>
@@ -46,7 +46,7 @@ const ContentSelector = () => {
         </div>
       </div>
       <div className="collapse collapse-plus join-item border-base-300 border">
-        <input type="radio" name="my-accordion-4" />
+        <input type="radio" name="content-accordion" />
         <div className="collapse-title text-xl text-left font-medium">Art</div>
         <div className="collapse-content">
           {arts.map((art, i) => (
