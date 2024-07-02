@@ -1,29 +1,41 @@
-import React from "react";
+import Art from "@/components/base/Art/component";
+import { ArtProps } from "@/components/base/Art/types";
+import React, { useEffect, useState } from "react";
 
 const Feed = () => {
+  const [arts, setArts] = useState<ArtProps[]>([]);
+
+  useEffect(() => {
+    setArts([
+      {
+        creator: "username",
+        creatorAvatar:
+          "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+        description:
+          "description descriptiondescriptiondescription iptiondescriptiondescriptio iptiondescriptiondescriptio",
+        likes: 10203,
+        liked: false,
+      },
+      {
+        creator: "username",
+        creatorAvatar:
+          "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+        description:
+          "description descriptiondescriptiondescription iptiondescriptiondescriptio iptiondescriptiondescriptio",
+        likes: 10203,
+        liked: false,
+      },
+    ]);
+  }, []);
+
   return (
     <div className="carousel carousel-vertical rounded-box h-[50rem]">
-      <div className="carousel-item h-full">
-        <img src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg" />
-      </div>
-      <div className="carousel-item h-full">
-        <img src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg" />
-      </div>
-      <div className="carousel-item h-full">
-        <img src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg" />
-      </div>
-      <div className="carousel-item h-full">
-        <img src="https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.jpg" />
-      </div>
-      <div className="carousel-item h-full">
-        <img src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.jpg" />
-      </div>
-      <div className="carousel-item h-full">
-        <img src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.jpg" />
-      </div>
-      <div className="carousel-item h-full">
-        <img src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.jpg" />
-      </div>
+      {arts.map((art) => (
+        <div className="relative carousel-item h-full">
+          <img src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg" />
+          <Art art={art} />
+        </div>
+      ))}
     </div>
   );
 };
