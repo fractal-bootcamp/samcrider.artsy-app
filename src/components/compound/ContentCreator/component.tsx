@@ -1,10 +1,15 @@
 import React from "react";
 import { ContentCreatorProps } from "./types";
+import PingPong from "@/components/content/games/PingPong/component";
 
 const ContentCreator = ({ mode }: ContentCreatorProps) => {
   switch (mode.choice) {
     case "Ping Pong":
-      return <div>Ping Pong</div>;
+      return (
+        <div className="h-full w-full">
+          <PingPong />
+        </div>
+      );
     case "Cup Pong":
       return <div>Cup Pong</div>;
     case "Box Clicker":

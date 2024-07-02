@@ -31,8 +31,8 @@ const CreateModal = () => {
       >
         CREATE
       </button>
-      <dialog id="create_modal" className="modal">
-        <div className="modal-box flex flex-col justify-between items-center">
+      <dialog id="create_modal" className="modal h-full w-full">
+        <div className="modal-box min-w-fit flex flex-col justify-between items-center h-fit w-fit">
           {mode.selected ? (
             <ContentCreator mode={mode} />
           ) : (
