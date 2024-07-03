@@ -48,6 +48,7 @@ const ContentSelector = ({ setMode }: ContentSelectorProps) => {
               key={i}
               className="btn m-2"
               onClick={() => handleClick(game.title)}
+              disabled={i > 0}
             >
               {game.title}
             </button>
