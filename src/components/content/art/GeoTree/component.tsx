@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { Canvas } from "./resources/canvas";
 import { radians } from "./resources/ctxHelpers";
 import { remapper } from "./resources/scaling";
@@ -103,7 +103,7 @@ const GeoTree = () => {
         paneRef.current = null;
       }
     };
-  }, [config]);
+  }, []);
 
   useEffect(() => {
     if (!ctx || !_width || !_height) return;
@@ -167,9 +167,18 @@ const GeoTree = () => {
     draw();
   }, [config, ctx, _width, _height, config.animateIterations]);
 
-  const handleUpdate = (newData: Config) => {
-    setConfig((prevState) => ({ ...prevState, ...newData }));
-  };
+  useEffect(() => {
+    if (config.animateIterations) {
+      const interval = setInterval(() => {
+        setConfig((prevState) => ({
+          ...prevState,
+          iterations: (prevState.iterations + 1) % (MAX_ITERATIONS + 1), // Loop back to 0
+        }));
+      }, 1500);
+
+      return () => clearInterval(interval);
+    }
+  }, [config.animateIterations]);
 
   return (
     <div className="flex flex-col justify-end">
