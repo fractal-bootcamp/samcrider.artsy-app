@@ -1,40 +1,14 @@
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Canvas } from "./resources/canvas";
-import { radians } from "./resources/ctxHelpers";
-import { remapper } from "./resources/scaling";
-import { Matrix2D, Vec2D, Vector } from "./resources/vectors";
+import { Vec2D, Vector } from "./resources/vectors";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { Pane } from "tweakpane";
 import { Config } from "./types";
-
-const MAX_ITERATIONS = 11;
-const remapH = remapper([0, MAX_ITERATIONS], [23, 88]);
-const hsvGradient = (iteration: number) =>
-  `hsl(${remapH(iteration)}, 96%, 30%)`;
-
-function determineTriangleTip(angle: number): (p1: Vec2D, p2: Vec2D) => Vec2D {
-  const angleRad = radians(angle);
-
-  const cos = Math.cos(angleRad);
-  const cos2 = cos * cos;
-
-  const sin = Math.sin(angleRad);
-  const sincos = sin * cos;
-
-  const rot: Matrix2D = [
-    [cos2, sincos],
-    [-sincos, cos2],
-  ];
-
-  return (p1, p2) => {
-    const vec = Vector.sub(p1, p2);
-
-    const dir = Vector.mul(vec, rot);
-    const p3 = Vector.add(p2, dir);
-
-    return p3;
-  };
-}
+import {
+  determineTriangleTip,
+  hsvGradient,
+  MAX_ITERATIONS,
+} from "./resources/ctxHelpers";
 
 const GeoTree = () => {
   const [config, setConfig] = useState<Config>({
@@ -103,7 +77,7 @@ const GeoTree = () => {
         paneRef.current = null;
       }
     };
-  }, []);
+  }, [config]);
 
   useEffect(() => {
     if (!ctx || !_width || !_height) return;
