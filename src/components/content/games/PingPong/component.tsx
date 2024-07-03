@@ -1,5 +1,4 @@
 import { Physics, useBox, usePlane, useSphere } from "@react-three/cannon";
-import { useGLTF } from "@react-three/drei";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import lerp from "lerp";
 import clamp from "lodash-es/clamp";
@@ -12,6 +11,7 @@ import earthImg from "./resources/cross.jpg";
 import Text from "./text";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader.js";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { useGLTF } from "@react-three/drei";
 
 type State = {
   api: {
